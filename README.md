@@ -3,10 +3,10 @@ The Recipe Finder endeavors to be the largest and easiest to search collection o
 
 The Recipe Finder allows you to search a repository of recipes ("Discover"), Bookmark recipes you like ("Bookmarks"), find recipes you can make with ingredients on-hand ("What Can I Make?"), and create a shopping list ("Shopping List").
 
-# Contributing
+## Contributing
 This is a Ruby on Rails app. Everything you need to contribute is below.
 
-## Development Environment
+### Development Environment
 * Developed on Cloud9 (AWS development environment) with the default settings (yes, that means I used Amazon Linux).
 * ```yarn --version``` -> 1.22.10 (had to install this via): ```npm install --global yarn```
 * ```ruby --version``` -> ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
@@ -14,5 +14,5 @@ This is a Ruby on Rails app. Everything you need to contribute is below.
 * ```node --version``` -> v10.23.1
 * ```rails --verion``` -> Rails 6.1.1 (had to install this via): ```gem install rails```
 
-## Getting started
-```https://github.com/Gregory-Ledray/Recipe-Finder.git```
+### Getting started
+```git clone https://github.com/Gregory-Ledray/Recipe-Finder.git```
