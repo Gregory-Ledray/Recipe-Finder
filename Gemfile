@@ -10,7 +10,7 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use Bootstrap to style the UI
-gem 'bootstrap-sass', '~>3.4.1'
+gem 'bootstrap', '~> 5.0.0.beta1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -32,6 +32,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Need JQuery for Bootstrap
 gem 'jquery-rails'
+# https://stackoverflow.com/questions/51926146/ruby-on-rails-autoprefixer-doesn-t-support-node-v4-9-1-update-it-how-to-fix
+gem 'mini_racer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
