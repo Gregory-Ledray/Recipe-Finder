@@ -1,0 +1,13 @@
+<h1><%= @recipeSelected.name %></h1>
+<% if @recipeSelected.image %>
+<img src=""/>
+<% end %>
+<p><%= @recipeSelected.short_description %></p>
+<h3>Ingredients</h3>
+<p><%= @recipeSelected.ingredient %></p>
+<h3>Instructions</h3>
+<p><%= @recipeSelected.instructions %></p>
+<% if @recipeSelected.long_description && @recipeSelected.long_description.length > 0 %>
+<h3>About This Recipe</h3>
+<p><%= @recipeSelected.long_description %></p>
+<% end %>
