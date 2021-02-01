@@ -1,6 +1,8 @@
 <h1>All Recipes</h1>
+<%= link_to 'Add a Recipe', new_recipe_path, class: "btn btn-primary", role: "button" %>
 <% @recipes.each do |recipe| %>
     <div class="card">
+        <a href="<%= recipe_path(recipe) %>" style="all:unset;color:unset;cursor:pointer;">
         <% if recipe.image %>
         <img class="card-img-top" src="">
         <%end%>
@@ -8,5 +10,6 @@
             <h5 class="card-title"><%= recipe.name %></h5>
             <p class="card-text"><%= recipe.short_description %></p>
         </div>
+        </a>
     </div>
 <% end %>

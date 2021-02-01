@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/discover', to: 'discover#index'
   
   resources :recipe
-#   get '/add-recipe', to: 'add-recipe#get'
+  get '/recipe/new', to: 'recipe#new'
 #   get '/bookmarks', to: 'bookmarks#get'
 #   get '/what-can-i-make', to: 'what-can-i-make#get'
 #   get '/shopping-list', to: 'shopping-list#get'

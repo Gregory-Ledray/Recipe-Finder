@@ -7,6 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.text :ingredient
       t.text :instructions
       t.text :long_description
+      t.integer :license_status
 
       t.timestamps
     end

@@ -11,3 +11,5 @@
 <h3>About This Recipe</h3>
 <p><%= @recipe.long_description %></p>
 <% end %>
+
+<%= link_to 'Edit this Recipe', edit_recipe_path(@recipe), class: "btn btn-primary", role: "button" %>
