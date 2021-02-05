@@ -1,6 +1,6 @@
 <h1><%= @recipe.name %></h1>
 <% if @recipe.image %>
-<img src=""/>
+<%= image_tag url_for(:recipe => "recipe", :action => "show_image") %>
 <% end %>
 <p><%= @recipe.short_description %></p>
 <h3>Ingredients</h3>

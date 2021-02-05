@@ -1,0 +1,13 @@
+<h1>Import Ingredients</h1>
+
+<p>An import file should put one entry on each line. It is assumed that the entries follow the column order in the database.
+If you don't know what the column order is in the database you should not use this tool.</p>
+
+<%= form_for @import do |form| %>
+<div class="mb-3">
+    <%= form.label :file %>
+    <%= form.file_field :file, accept: 'text/plain, .csv', class: 'form-control-file' %>
+</div>
+</div>
+<%= submit_tag "Import", class:"btn btn-primary" %>
+<% end %>

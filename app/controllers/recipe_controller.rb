@@ -7,6 +7,10 @@ class RecipeController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
     
+    def show_image
+        send_data @recipe.image, :disposition => 'inline'
+    end
+    
     def new
         @recipe = Recipe.new
     end

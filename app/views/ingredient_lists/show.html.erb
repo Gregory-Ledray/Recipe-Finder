@@ -1,0 +1,10 @@
+<h1>Ingredient List</h1>
+<% if @ingredient %>
+<h5>Ingredient Name</h5>
+<%= @ingredient.name %>
+<% end %>
+<h5>Checked</h5>
+<p><%= @ingredient_list.checked %></p>
+<h5>Quantity</h5>
+<p><%= @ingredient_list.quantity %></p>
+<%= link_to "Edit", edit_ingredient_list_path(@ingredient_list), class: "btn btn-primary", role:"button" %>
