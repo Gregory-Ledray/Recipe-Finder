@@ -1,4 +1,4 @@
-class RecipeController < ApplicationController
+class RecipesController < ApplicationController
     def index
         @recipes = Recipe.all
     end
@@ -13,6 +13,9 @@ class RecipeController < ApplicationController
     
     def new
         @recipe = Recipe.new
+        @ingredient_lists = Array.new
+        blank_entry = getBlankIngredientList()
+        @ingredient_lists.push(blank_entry)
     end
     
     def create
@@ -26,6 +29,9 @@ class RecipeController < ApplicationController
     
     def edit
         @recipe = Recipe.find(params[:id])
+        @ingredient_lists = Array.new
+        blank_entry = getBlankIngredientList()
+        @ingredient_lists.push(blank_entry)
     end
     
     def update
@@ -37,9 +43,17 @@ class RecipeController < ApplicationController
         end
     end
     
+    def getBlankIngredientList
+        blank_entry = IngredientList.new
+        blank_entry.checked = false
+        blank_entry.quantity = 0
+        blank_entry.ingredient_id = 1
+        return blank_entry
+    end
+    
     private
         def recipe_params
-            params.require(:recipe).permit(:name, :image, :short_description, :ingredient, 
+            params.require(:recipe).permit(:name, :image, :short_description, 
             :instructions, :long_description, :license_status)
         end
 end

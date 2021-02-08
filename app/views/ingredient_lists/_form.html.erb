@@ -2,14 +2,14 @@
 2. Set @search_results
 3. Iterate over each search result and display it in the partial. -->
 
-<%= form_with model: @ingredient_list do |form| %>
+<%= form_with model: ingredient_list do |form| %>
 
 <%= form.fields_for :ingredients do |form2| %>
 
   <div class="mb-3">
     <%= form2.label :name, "Name:" %>
     <%= form2.text_field :name %>
-    <%= form2.button "Search", class: 'btn btn-primary' %>
+    <%= form2.button "Search", class: 'btn btn-secondary' %>
   </div>
 
   <% if @ingredient %>
@@ -25,7 +25,7 @@
   <div class="mb-3">
     <label for="ingredient_list_ingredient_id">Ingredient ID</label>
     <%= form.number_field :ingredient_id, class: 'form-control' %>
-    <% @ingredient_list.errors.full_messages_for(:ingredient_id).each do |message| %>
+    <% ingredient_list.errors.full_messages_for(:ingredient_id).each do |message| %>
         <div class="invalid-feedback">
           <%= message %>
         </div>
@@ -39,7 +39,7 @@
   <div class="mb-3">
     <%= form.label :quantity %>
     <%= form.number_field :quantity, class: 'form-control' %>
-    <% @ingredient_list.errors.full_messages_for(:quantity).each do |message| %>
+    <% ingredient_list.errors.full_messages_for(:quantity).each do |message| %>
         <div class="invalid-feedback">
           <%= message %>
         </div>

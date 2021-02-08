@@ -1,10 +1,9 @@
-<% # I tried to use path_recipe but it resolves to /recipes/ which is wrong. %>
-<%= form_with scope: :recipe, url: recipe_path(@recipe) do |form| %>
+<%= form_with model: recipe do |form| %>
 <div class="mb-3">
     <%= form.label :name %>
     <%= form.text_field :name, class: 'form-control' %>
     <% recipe.errors.full_messages_for(:name).each do |message| %>
-        <div class="invalid-feedback">
+        <div>
           <%= message %>
         </div>
     <% end %>
@@ -17,25 +16,22 @@
     <%= form.label :short_description %>
     <%= form.text_area :short_description, class: 'form-control' %>
     <% recipe.errors.full_messages_for(:short_description).each do |message| %>
-        <div class="invalid-feedback">
+        <div>
           <%= message %>
         </div>
     <% end %>
 </div>
-<div class="mb-3">
-    <%= form.label :ingredient %>
-    <%= form.text_area :ingredient, class: 'form-control' %>
-    <% recipe.errors.full_messages_for(:ingredient).each do |message| %>
-        <div class="invalid-feedback">
-          <%= message %>
-        </div>
+<label>Ingredients</label>
+<% if @ingredient_lists != nil %>
+    <% @ingredient_lists.each do |ingredient_list| %>
+        <%= render "ingredient_lists/form", ingredient_list: ingredient_list %>
     <% end %>
-</div>
+<% end %>
 <div class="mb-3">
     <%= form.label :instructions %>
     <%= form.text_area :instructions, class: 'form-control', rows: 6 %>
     <% recipe.errors.full_messages_for(:instructions).each do |message| %>
-        <div class="invalid-feedback">
+        <div>
           <%= message %>
         </div>
     <% end %>
@@ -43,11 +39,20 @@
 <div class="mb-3">
     <%= form.label :long_description %>
     <%= form.text_area :long_description, class: 'form-control', rows: 6 %>
+    <% recipe.errors.full_messages_for(:long_description).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
 </div>
 <div class="form-check">
-    <%= form.check_box :license_status, class: 'form-check-input' %>
-    <!--input type="checkbox" class="form-check-input" id="check1"-->
+    <% if recipe.errors.full_messages_for(:license_status) == nil || recipe.errors.full_messages_for(:license_status).length < 1 %>
+    <%= form.check_box :license_status, class: "form-check-input" %>
+    <% else %>
+    <%= form.check_box :license_status, class: "form-check-input is-invalid" %>
+    <% end %>
     <label class="form-check-label" for="check1">I attest that this recipe is of my own creation or is in the public domain. Furthermore, I release this work under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons - Attribution 4.0 License</a> (<a href="https://creativecommons.org/licenses/by/4.0/">license summary</a>).</label>
+    <% recipe.errors.full_messages_for(:license_status).each do |message| %>
+        <div class="invalid-feedback"><%= message %></div>
+    <% end %>
 </div>
 
 <%= form.submit class: 'btn btn-primary' %>
