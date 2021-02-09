@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :bookmarks
   resources :shopping_lists
-  resources :ingredient_lists
+  resources :ingredient_list_items
   resources :users
   resources :recipes
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_212750) do
+ActiveRecord::Schema.define(version: 2021_02_09_145606) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_212750) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ingredient_lists", force: :cascade do |t|
+  create_table "ingredient_list_items", force: :cascade do |t|
     t.integer "quantity"
     t.boolean "checked"
     t.datetime "created_at", precision: 6, null: false

@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
-    has_and_belongs_to_many :ingredient_lists
+    has_many :ingredient_list_items
+    has_one :user
     
     validates :name, presence: true, length: {minimum: 3}
     validates :short_description, presence: true, length: {minimum: 3}

@@ -1,0 +1,10 @@
+<h1>Ingredient Lists</h1>
+<%= link_to 'New Ingredient List', new_ingredient_list_item_path, class: "btn btn-primary", role: "button" %>
+
+<ul>
+    <% @ingredient_list_items.each do |ingredient_list_item| %>
+    <li>
+        <%= link_to "test", ingredient_list_item %>
+    </li>
+    <% end %>
+</ul>

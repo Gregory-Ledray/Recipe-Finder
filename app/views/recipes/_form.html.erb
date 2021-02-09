@@ -22,9 +22,9 @@
     <% end %>
 </div>
 <label>Ingredients</label>
-<% if @ingredient_lists != nil %>
-    <% @ingredient_lists.each do |ingredient_list| %>
-        <%= render "ingredient_lists/form", ingredient_list: ingredient_list %>
+<% if @ingredient_list_items != nil %>
+    <% @ingredient_list_items.each do |ingredient_list_item| %>
+        <%= render "ingredient_list_items/form", ingredient_list_item: ingredient_list_item %>
     <% end %>
 <% end %>
 <div class="mb-3">

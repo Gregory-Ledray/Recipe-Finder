@@ -1,2 +1,2 @@
-module IngredientListsHelper
+module IngredientListItemsHelper
 end

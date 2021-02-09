@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
     def new
         @recipe = Recipe.new
         @ingredient_lists = Array.new
-        blank_entry = getBlankIngredientList()
+        blank_entry = getBlankIngredientListItem()
         @ingredient_lists.push(blank_entry)
     end
     
@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
     def edit
         @recipe = Recipe.find(params[:id])
         @ingredient_lists = Array.new
-        blank_entry = getBlankIngredientList()
+        blank_entry = getBlankIngredientListItem()
         @ingredient_lists.push(blank_entry)
     end
     
@@ -43,8 +43,8 @@ class RecipesController < ApplicationController
         end
     end
     
-    def getBlankIngredientList
-        blank_entry = IngredientList.new
+    def getBlankIngredientListItem
+        blank_entry = IngredientListItem.new
         blank_entry.checked = false
         blank_entry.quantity = 0
         blank_entry.ingredient_id = 1
