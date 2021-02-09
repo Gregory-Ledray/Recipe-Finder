@@ -1,7 +1,5 @@
 class IngredientListItem < ApplicationRecord
-    has_one :recipe
-    has_many :shopping_list
-    has_one :user
+    has_one :ingredient
     
     validates :checked, presence: true
     validates :quantity, presence: true

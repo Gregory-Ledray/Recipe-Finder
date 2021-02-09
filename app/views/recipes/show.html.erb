@@ -4,6 +4,9 @@
 <% end %>
 <p><%= @recipe.short_description %></p>
 <h3>Ingredients</h3>
+<% @recipe.ingredient_list_items.each do |ingredient_list_item| %>
+    <p><%= ingredient_list_item.quantity %> <%= ingredient_list_item.ingredient.name %></p>
+<% end %>
 <h3>Instructions</h3>
 <p><%= @recipe.instructions %></p>
 <% if @recipe.long_description && @recipe.long_description.length > 0 %>
