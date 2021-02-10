@@ -1,7 +1,11 @@
 class IngredientListItem < ApplicationRecord
-    has_one :ingredient
-    
-    validates :checked, presence: true
+    validates :ingredient, presence: true
     validates :quantity, presence: true
-    validates :ingredient_id, presence: true
+    
+    before_save :make_checked_not_nil
+    def make_checked_not_nil
+        if self.checked == nil
+            self.checked = false
+        end
+    end
 end

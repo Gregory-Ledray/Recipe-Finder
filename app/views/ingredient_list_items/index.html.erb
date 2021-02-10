@@ -1,10 +1,16 @@
-<h1>Ingredient Lists</h1>
+<h1>Ingredient List Items</h1>
 <%= link_to 'New Ingredient List', new_ingredient_list_item_path, class: "btn btn-primary", role: "button" %>
 
 <ul>
     <% @ingredient_list_items.each do |ingredient_list_item| %>
     <li>
-        <%= link_to "test", ingredient_list_item %>
+        <% if ingredient_list_item.ingredient != nil && ingredient_list_item.recipe_id != nil %>
+        <%= link_to "#{ingredient_list_item.quantity} #{ingredient_list_item.ingredient} is part of the recipe with ID #{ingredient_list_item.recipe_id}", ingredient_list_item %>
+        <% elsif ingredient_list_item.ingredient != nil %>
+        <%= link_to "#{ingredient_list_item.quantity} #{ingredient_list_item.ingredient}", ingredient_list_item %>
+        <% else %>
+        <%= link_to ingredient_list_item.id, ingredient_list_item %> (ingredient name not set; ID is shown)
+        <% end %>
     </li>
     <% end %>
 </ul>

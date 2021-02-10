@@ -12,3 +12,11 @@
  *
  */
 @import "bootstrap";
+
+/* An invalid-feedback which is always displayed. Extremely helpful when showing errors conditionally within an erb template. */
+.local-invalid-feedback {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}

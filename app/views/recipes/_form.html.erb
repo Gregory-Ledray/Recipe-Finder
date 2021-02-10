@@ -3,35 +3,69 @@
     <%= form.label :name %>
     <%= form.text_field :name, class: 'form-control' %>
     <% recipe.errors.full_messages_for(:name).each do |message| %>
-        <div>
+        <div class="local-invalid-feedback">
           <%= message %>
         </div>
     <% end %>
 </div>
-<div class="mb-3">
-    <%= form.label :image %>
-    <%= form.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: 'form-control-file' %>
+<div class="input-group mb-3">
+    <%= form.label "Cover Photo", class: 'input-group-text' %>
+    <%= form.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: 'form-control' %>
 </div>
+
 <div class="mb-3">
     <%= form.label :short_description %>
     <%= form.text_area :short_description, class: 'form-control' %>
     <% recipe.errors.full_messages_for(:short_description).each do |message| %>
-        <div>
+        <div class="local-invalid-feedback">
           <%= message %>
         </div>
     <% end %>
 </div>
+
 <label>Ingredients</label>
-<% if @ingredient_list_items != nil %>
-    <% @ingredient_list_items.each do |ingredient_list_item| %>
-        <%= render "ingredient_list_items/form", ingredient_list_item: ingredient_list_item %>
+<div class="container">
+    <%= form.fields_for :ingredient_list_items do |list_items_form| %>
+    <!-- may have to set form_for instead of form_with above when using this -->
+        
+    <!-- TODO fix validation for .errors for this nested form -->
+      <div class="mb-3">
+        <%= list_items_form.label :quantity %>
+        <%= list_items_form.number_field :quantity, step: :any, class: 'form-control' %>
+        <% recipe.errors.full_messages_for(:quantity).each do |message| %>
+            <div class="local-invalid-feedback">
+              <%= message %>
+            </div>
+        <% end %>
+      </div>
+        
+      <div class="mb-3">
+        <%= list_items_form.label :unit %>
+        <%= list_items_form.select :unit, ['', 'teaspoon', 'Tablespoon', 'fluid ounce', 'cup', 'pint', 'quart', 'gallon', 'ounce', 'pound', 'ml', 'liter'], {}, class: 'form-select' %>
+        <% recipe.errors.full_messages_for(:unit).each do |message| %>
+            <div class="local-invalid-feedback">
+              <%= message %>
+            </div>
+        <% end %>
+      </div>
+        
+      <div class="mb-3">
+        <%= list_items_form.label :ingredient %>
+        <%= list_items_form.text_field :ingredient, class: 'form-control' %>
+        <% recipe.errors.full_messages_for(:ingredient).each do |message| %>
+          <divclass="local-invalid-feedback">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-<% end %>
+</div>
+
 <div class="mb-3">
     <%= form.label :instructions %>
     <%= form.text_area :instructions, class: 'form-control', rows: 6 %>
     <% recipe.errors.full_messages_for(:instructions).each do |message| %>
-        <div>
+        <div class="local-invalid-feedback">
           <%= message %>
         </div>
     <% end %>
@@ -40,7 +74,7 @@
     <%= form.label :long_description %>
     <%= form.text_area :long_description, class: 'form-control', rows: 6 %>
     <% recipe.errors.full_messages_for(:long_description).each do |message| %>
-        <div><%= message %></div>
+        <div class="local-invalid-feedback"><%= message %></div>
     <% end %>
 </div>
 <div class="form-check">
@@ -51,7 +85,7 @@
     <% end %>
     <label class="form-check-label" for="check1">I attest that this recipe is of my own creation or is in the public domain. Furthermore, I release this work under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons - Attribution 4.0 License</a> (<a href="https://creativecommons.org/licenses/by/4.0/">license summary</a>).</label>
     <% recipe.errors.full_messages_for(:license_status).each do |message| %>
-        <div class="invalid-feedback"><%= message %></div>
+        <div class="local-invalid-feedback"><%= message %></div>
     <% end %>
 </div>
 

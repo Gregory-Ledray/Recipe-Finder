@@ -1,13 +1,13 @@
 <%= form_with model: ingredient do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
     <% ingredient.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
+      <div class="local-invalid-feedback"><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

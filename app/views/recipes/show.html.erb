@@ -5,7 +5,7 @@
 <p><%= @recipe.short_description %></p>
 <h3>Ingredients</h3>
 <% @recipe.ingredient_list_items.each do |ingredient_list_item| %>
-    <p><%= ingredient_list_item.quantity %> <%= ingredient_list_item.ingredient.name %></p>
+    <p><%= ingredient_list_item.quantity %> <%= ingredient_list_item.unit %> <%= ingredient_list_item.ingredient %></p>
 <% end %>
 <h3>Instructions</h3>
 <p><%= @recipe.instructions %></p>

@@ -3,44 +3,46 @@
 3. Iterate over each search result and display it in the partial. -->
 
 <%= form_with model: ingredient_list_item do |form| %>
-
-<%= form.fields_for :ingredients do |form2| %>
-
-  <div class="mb-3">
-    <%= form2.label :name, "Name:" %>
-    <%= form2.text_field :name %>
-    <%= form2.button "Search", class: 'btn btn-secondary' %>
-  </div>
-
-  <% if @ingredient %>
-    <h5>Search Results</h5>
-    <ul>
-      <li>
-        Name: <%= @ingredient.name %>; ID: <%= @ingredient.id %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
-
-  <div class="mb-3">
-    <label for="ingredient_list_item_ingredient_id">Ingredient ID</label>
-    <%= form.number_field :ingredient_id, class: 'form-control' %>
-    <% ingredient_list_item.errors.full_messages_for(:ingredient_id).each do |message| %>
-        <div class="invalid-feedback">
-          <%= message %>
-        </div>
-    <% end %>
-  </div>
   <div class="form-check">
     <%= form.check_box :checked, class: 'form-check-input' %>
     <%= form.label :checked, class: 'form-check-label' %>
   </div>
-
+  
   <div class="mb-3">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, class: 'form-control' %>
+    <%= form.number_field :quantity, step: :any, class: 'form-control' %>
     <% ingredient_list_item.errors.full_messages_for(:quantity).each do |message| %>
-        <div class="invalid-feedback">
+        <div class="local-invalid-feedback">
+          <%= message %>
+        </div>
+    <% end %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :unit %>
+    <%= form.select :unit, ['', 'teaspoon', 'Tablespoon', 'fluid ounce', 'cup', 'pint', 'quart', 'gallon', 'ounce', 'pound', 'ml', 'liter'], {}, class: 'form-select' %>
+    <% ingredient_list_item.errors.full_messages_for(:unit).each do |message| %>
+        <div class="local-invalid-feedback">
+          <%= message %>
+        </div>
+    <% end %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :ingredient %>
+    <%= form.text_field :ingredient, class: 'form-control' %>
+    <% ingredient_list_item.errors.full_messages_for(:ingredient).each do |message| %>
+      <divclass="local-invalid-feedback">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :recipe_id, "Recipe ID" %>
+    <%= form.number_field :recipe_id, class: 'form-control' %>
+    <% ingredient_list_item.errors.full_messages_for(:recipe_id).each do |message| %>
+        <div class="local-invalid-feedback">
           <%= message %>
         </div>
     <% end %>
